@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Movie Review Sentiment Analysis Predictions</title>
+  </head>
+  <body>
+    <h1>Movie Review Sentiment Analysis Predictions</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Review</th>
+          <th>Sentiment</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for prediction in predictions %}
+        <tr>
+          <td class="review">{{ prediction.review }}</td>
+          <td class="{{ 'positive' if prediction.sentiment=='Positive' else 'negative'}}">{{ prediction.sentiment }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a class="New_predictions" href="/">Make a new prediction</a>
+  </body>
+</html>
