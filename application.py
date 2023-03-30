@@ -8,15 +8,15 @@ file_path = 'ml_model.pickle'
 with open(file_path,'rb') as f:
     model = pickle.load(f)
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 # Defining route for home page
-@app.route('/')
+@application.route('/')
 def index():
     return render_template("index.html")
 
 # Defining route for api
-@app.route('/predict_api',methods=['GET','POST'])
+@application.route('/predict_api',methods=['GET','POST'])
 def predict_api():
     if request.method == 'POST':
 
@@ -29,7 +29,7 @@ def predict_api():
             sentiment="Negative"
         return jsonify(sentiment)
     
-@app.route('/predict',methods=['GET','POST'])
+@application.route('/predict',methods=['GET','POST'])
 def predict():
     if request.method == 'POST':
         review=request.form['review']
@@ -43,12 +43,12 @@ def predict():
         return render_template('predictions.html', predictions=predictions)
     return render_template("index.html")
 
-@app.route('/predictions')
+@application.route('/predictions')
 def predictions():
     # Render the predictions page with the list of predictions
     return render_template('predictions.html', predictions=predictions)
 
 if __name__=="__main__":
     predictions=[]
-    app.run()
+    application.run()
         
