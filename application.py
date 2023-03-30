@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, Response, url_for, jsonify
-import tensorflow as tf
 import pickle
 
 from utils import text_preprocessor
