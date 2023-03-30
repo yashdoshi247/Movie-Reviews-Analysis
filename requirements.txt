@@ -1,4 +1,4 @@
 numpy
 sklearn
 nltk
-Flask
+Flask==2.1.0
